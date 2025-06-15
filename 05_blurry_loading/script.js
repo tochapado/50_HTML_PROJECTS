@@ -10,7 +10,7 @@ function blurring()
     loadText.textContent = load + '%';
     loadText.style.opacity = (1 - (load / 100));
     // loadText.style.opacity = scale(load, 0, 100, 1, 0);
-    bg.style.filter = 'blur(' + (30 - (load * 30 / 100)) + 'px)';
+    bg.style.filter = 'blur(' + (30 * (1 - (load / 100))) + 'px)';
 
     if(load > 99) clearInterval(intervalID);
 };
