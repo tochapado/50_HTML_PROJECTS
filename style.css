@@ -21,8 +21,6 @@ body {
     background-size: cover;
     color: #cfcfcf;
     font-family: 'Roboto', sans-serif;
-    height: 100vh;
-    overflow: hidden;
     text-align: center;
 }
 
@@ -55,8 +53,10 @@ a + a {
 }
 
 footer {
+    background-color: #222222f0;
     bottom: 0;
     font-size: 0.8em;
-    position: absolute;
+    padding-bottom: 0.5em;
+    position: fixed;
     width: 100%;
 }
