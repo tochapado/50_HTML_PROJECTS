@@ -31,7 +31,7 @@ body {
     color: #fff;
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     height: 100vh;
     overflow: hidden;
     place-content: center;
