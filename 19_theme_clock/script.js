@@ -55,7 +55,9 @@ function setTime()
 
     timeEl.innerHTML = `${hoursForClock}:${formatTime(minutes)} ${ampm(hours)}`;
     dateEl.innerHTML = `
-        ${days[day]}, ${months[month]} <span class="circle">${date}</span>
+        <span>${days[day]},</span>
+        <span>${months[month]}</span>
+        <span class="circle">${date}</span>
     `;
 };
 
