@@ -11,11 +11,17 @@ var clipboard_el = document.getElementById("clipboard");
 
 /******************** Event Listeners ***********************/
 
-clipboard_el.addEventListener("click", function()
+clipboard_el.addEventListener("click", async function()
 {
   var password = result_el.innerText;
 
   if(!password) return;
+
+  // await navigator.clipboard.writeText(password);
+
+  // var rola = await navigator.clipboard.readText();
+
+  // console.log(rola)
 
   /* deprecated
   var textarea = document.createElement("textarea");
@@ -27,7 +33,15 @@ clipboard_el.addEventListener("click", function()
 
   navigator.clipboard
     .writeText(password)
-    .then(alert("Password Copied"));
+    .then((result) =>
+    {
+      alert("Password Copied Successfully!");
+    })
+    .catch(function(error)
+    {
+      alert("An ERROR ocurred while copying the password!");
+      console.error(error);
+    });
 
   // navigator.clipboard
   //   .readText()
