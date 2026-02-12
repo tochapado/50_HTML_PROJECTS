@@ -28,15 +28,17 @@ class Cell
     this.vx = 0;
     this.vy = 0;
 
-    this.ease = 0.1;
-    this.friction = 0.9;
+    this.ease = 0.5;
+    this.friction = 0.8;
+
+    this.magicFactor = this.effect.aspectRatio > 1 ? 0 : (this.effect.width / 1.5);
   }
 
   draw(context)
   {
     context.drawImage(
       this.image,
-      this.x + this.slideX,
+      this.x + this.slideX + this.magicFactor,
       this.y + this.slideY,
       this.width,
       this.height,
@@ -56,7 +58,7 @@ class Cell
     if(distance < this.effect.mouse.radius)
     {
       const angle = Math.atan2(dy, dx);
-      const force = distance / this.effect.mouse.radius;
+      const force = 10 * distance / this.effect.mouse.radius;
       this.vx = force * Math.cos(angle);
       this.vy = force * Math.sin(angle);
     }
@@ -100,8 +102,8 @@ class Effect
     })
     this.canvas.addEventListener("touchmove", e =>
     {
-      this.mouse.x = e.clientX;
-      this.mouse.y = e.clientY;
+      this.mouse.x = e.targetTouches[0].clientX;
+      this.mouse.y = e.targetTouches[0].clientY;
     })
     this.canvas.addEventListener("touchend", e =>
     {
@@ -134,8 +136,6 @@ class Effect
 }
 
 const effect = new Effect(canvas);
-
-effect.render(ctx);
 
 
 function animate()
