@@ -1,3 +1,5 @@
+const IMAGE = document.querySelector("img");
+
 const ctx = canvas.getContext("2d");
 
 const WINDOW_WIDTH = window.innerWidth;
@@ -5,7 +7,7 @@ const WINDOW_HEIGHT = window.innerHeight;
 
 const ASPECT_RATIO = WINDOW_WIDTH / WINDOW_HEIGHT;
 
-let width = WINDOW_WIDTH;
+let width = WINDOW_WIDTH < IMAGE.width ? WINDOW_WIDTH : IMAGE.width;
 let height = width / ASPECT_RATIO;
 
 canvas.width = width;
@@ -18,10 +20,11 @@ class Cell
     this.effect = effect;
     this.x = x;
     this.y = y;
+
     this.width = this.effect.cellWidth;
     this.height = this.effect.cellHeight;
 
-    this.image = document.querySelector("img");
+    this.image = IMAGE;
 
     this.slideX = 0;
     this.slideY = 0;
@@ -30,15 +33,13 @@ class Cell
 
     this.ease = 0.5;
     this.friction = 0.8;
-
-    this.magicFactor = this.effect.aspectRatio > 1 ? 0 : (this.effect.width / 1.5);
   }
 
   draw(context)
   {
     context.drawImage(
       this.image,
-      this.x + this.slideX + this.magicFactor,
+      this.x + this.slideX,
       this.y + this.slideY,
       this.width,
       this.height,
@@ -77,7 +78,7 @@ class Effect
     this.height = this.canvas.height;
     this.aspectRatio = this.width / this.height;
 
-    this.resolutionX = 100;
+    this.resolutionX = 10;
     this.resolutionY = Math.floor(this.resolutionX / this.aspectRatio);
 
     this.cellWidth = this.width / this.resolutionX;
@@ -92,8 +93,8 @@ class Effect
     };
     this.canvas.addEventListener("mousemove", e =>
     {
-      this.mouse.x = e.clientX;
-      this.mouse.y = e.clientY;
+      this.mouse.x = e.offsetX;
+      this.mouse.y = e.offsetY;
     })
     this.canvas.addEventListener("mouseleave", e =>
     {
