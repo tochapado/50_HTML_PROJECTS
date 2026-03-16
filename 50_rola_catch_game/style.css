@@ -168,6 +168,12 @@ body {
   transition-timing-function: ease-in-out;
 }
 
+.rola img {
+  height: 100%;
+	object-fit: contain;
+	width: 100%;
+}
+
 .rola.caught {
   transform: translate(-50%, -50%) scale(0);
 }
