@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 :root {
 	--degrees: 0deg;
@@ -49,6 +49,10 @@ body {
 	box-shadow: 0 1px 10px #000;
 	padding: 4rem;
 	text-align: center;
+}
+
+.hidden {
+	display: none;
 }
 
 .conic {
@@ -114,7 +118,10 @@ body {
 	border: none;
 	border-radius: 100%;
 	cursor: pointer;
+	display: flex;
 	height: 2rem;
+	place-content: center;
+	place-items: center;
 	width: 2rem;
 }
 
@@ -122,7 +129,6 @@ body {
 	background-color: #7f7;
 }
 
-.pause {
+.stop {
 	background-color: #f77;
 }
-

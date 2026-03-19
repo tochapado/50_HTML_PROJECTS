@@ -1,33 +1,38 @@
-const resetBtn = document.getElementById("reset");
+const stopBtn = document.getElementById("stop");
 const playBtn = document.getElementById("play");
 const timerEl = document.getElementById("timer");
 const root = document.querySelector(":root");
 
-const totalSeconds = 300;
+// State
+let totalSeconds = 6;
 let playing = false;
 let currentSeconds = totalSeconds;
+let timeInterval = setInterval(run, 1000);
 
 timerEl.textContent = formatTime(totalSeconds);
 
-const timeInterval = setInterval(run, 1000);
-
+// EventListeners
 playBtn.addEventListener("click", () =>
 {
 	playing = !playing;
-	playBtn.classList.toggle("pause");
+	playBtn.classList.toggle("play");
 	const playIcon = playBtn.querySelector("i");
 	playIcon.classList.toggle("fa-play");
 	playIcon.classList.toggle("fa-pause");
 });
 
-resetBtn.addEventListener("click", reset);
+stopBtn.addEventListener("click", () =>
+{
+	reset();
+	document.querySelector("body").style.backgroundColor = "#222";
+});
 
+// Helper Functions
 function run()
 {
 	if(playing) {
 		currentSeconds -= 1;
 		if(currentSeconds <= 0) {
-			clearInterval(timeInterval);
 			reset();
 			return;
 		}	
@@ -46,6 +51,9 @@ function reset()
 	currentSeconds = totalSeconds;
 	timerEl.textContent = formatTime(currentSeconds);
 	root.style.setProperty("--degrees", "0deg");
+	clearInterval(timeInterval);
+	timeInterval = setInterval(run, 1000);
+	document.querySelector("body").style.backgroundColor = "#f00";
 }
 
 function calcDeg()

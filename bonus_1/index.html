@@ -11,7 +11,45 @@
 	<div class="container">
 		<h1>Timer</h1>
 		<div id="conic" class="conic">
+
 			<p id="timer" class="timer">00:00</p>
+
+<!--
+			<div class="edit hidden">
+				<div class="edit--minutes">
+					<button class="plus">
+						<i class="fas fa-chevron-up"></i>
+					</button>
+					<input
+						id="minutes"
+						class="minutes"
+						type="number"
+						min="0"
+						max="99"
+						placeholder="00"
+				  />
+					<button class="minus">
+						<i class="fas fa-chevron-down"></i>
+					</button>
+				</div>
+				<div class="edit--seconds">
+					<button class="plus">
+						<i class="fas fa-chevron-up"></i>
+					</button>
+					<input
+						id="seconds"
+						class="seconds"
+						type="number"
+						min="0"
+						max="59"
+						placeholder="00"
+				  />
+					<button class="minus">
+						<i class="fas fa-chevron-down"></i>
+					</button>
+				</div>
+			</div>
+-->
 			<div class="inner"></div>
 			<div class="hand">
 				<span></span>
@@ -19,8 +57,11 @@
 		</div>
 
 		<div class="buttons">
-			<button id="reset" class="btn">
-				<i class="fas fa-sync"></i>
+			<button id="edit" class="btn">
+				<i class="fas fa-pen"></i>
+			</button>
+			<button id="stop" class="btn stop">
+				<i class="fas fa-stop"></i>
 			</button>
 			<button id="play" class="btn play">
 				<i class="fas fa-play"></i>
