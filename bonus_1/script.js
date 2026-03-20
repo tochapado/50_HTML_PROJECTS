@@ -2,9 +2,10 @@ const stopBtn = document.getElementById("stop");
 const playBtn = document.getElementById("play");
 const timerEl = document.getElementById("timer");
 const root = document.querySelector(":root");
+const alarm = document.getElementById("alarm");
 
 // State
-let totalSeconds = 6;
+let totalSeconds = 300;
 let playing = false;
 let currentSeconds = totalSeconds;
 let timeInterval = setInterval(run, 1000);
@@ -25,6 +26,8 @@ stopBtn.addEventListener("click", () =>
 {
 	reset();
 	document.querySelector("body").style.backgroundColor = "#222";
+	alarm.pause();
+	alarm.currentTime = 0;
 });
 
 // Helper Functions
@@ -54,6 +57,7 @@ function reset()
 	clearInterval(timeInterval);
 	timeInterval = setInterval(run, 1000);
 	document.querySelector("body").style.backgroundColor = "#f00";
+	alarm.play();
 }
 
 function calcDeg()
