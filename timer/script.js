@@ -13,7 +13,7 @@ const secondsEl = secondsContainer.querySelector("p");
 // State
 let playing = false;
 let editing = false;
-let totalSeconds = 64;
+let totalSeconds = 500;
 let currentSeconds = totalSeconds;
 let timeInterval = setInterval(run, 1000);
 
